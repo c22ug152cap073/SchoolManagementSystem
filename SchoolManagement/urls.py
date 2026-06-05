@@ -21,6 +21,12 @@ urlpatterns = [
 
     path('api/', include('Teacher.urls')),
 
+    path('api/', include('subjects.urls')),
+
+    path('api/', include('attendance.urls')),
+
+    path('api/', include('results.urls')),
+
     # JWT URLs
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
