@@ -39,3 +39,23 @@ class ProfileAPIView(APIView):
             "message": "Welcome",
             "email": request.user.email
         })
+
+from students.models import Student
+from Teacher.models import Teacher
+from subjects.models import Subject
+from attendance.models import Attendance
+from results.models import Result   
+
+class DashboardAPIView(APIView):
+
+    def get(self, request):
+
+        data = {
+            "total_students": Student.objects.count(),
+            "total_teachers": Teacher.objects.count(),
+            "total_subjects": Subject.objects.count(),
+            "total_attendance": Attendance.objects.count(),
+            "total_results": Result.objects.count(),
+        }
+
+        return Response(data)
